@@ -22,21 +22,22 @@ ball = Ball()
 scoreboard = Scoreboard()
 
 screen.listen()
-screen.onkeypress(user_pad.up, "Up")
-screen.onkeypress(user_pad.down, "Down")
+screen.onkeypress(user_pad.up, "w")
+screen.onkeypress(user_pad.down, "s")
+screen.onkeypress(computer_pad.up, "Up")
+screen.onkeypress(computer_pad.down, "Down")
 
 game_is_on = True
 
 while game_is_on:
-    screen.update()
     time.sleep(0.1)
+    screen.update()
     ball.move()
-    computer_pad.move()
 
     # Detect contact with pads
-    if user_pad.distance(ball) < 30:
+    if user_pad.distance(ball) < 30 and ball.xcor() > -(SCREEN_WIDTH / 2) + 30:
         ball.x_direction = "right"
-    if computer_pad.distance(ball) < 30:
+    if computer_pad.distance(ball) < 30 and ball.xcor() < SCREEN_WIDTH / 2 + 30:
         ball.x_direction = "left"
 
     # Ball out of boundaries (score)

@@ -13,7 +13,7 @@ class Ball(Turtle):
     def create_ball(self):
         self.x_direction = "left"
         self.y_direction = "up"
-        self.shape("square")
+        self.shape("circle")
         self.color("white")
         self.penup()
 
