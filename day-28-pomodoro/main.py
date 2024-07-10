@@ -27,8 +27,9 @@ def reset_timer():
 
 # ---------------------------- TIMER MECHANISM ------------------------------- #
 def raise_above_all(root):
-    root.attributes('-topmost', 1)
-    root.attributes('-topmost', 0)
+    root.lift()
+    root.attributes("-topmost", True)
+    root.after_idle(window.attributes,'-topmost',False)
     root.focus_force()
 
 
